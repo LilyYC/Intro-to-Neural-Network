@@ -14,9 +14,9 @@ def softsign(z):
 def softsign_prime(z):
     """This function should compute the derivative of the softsign function with
     respect to its argument. It should be applied elementwise to the input array z."""
-
-    ### YOUR CODE HERE
-    pass
+    ##
+    return 1. / np.multiply(1+z) 
+    ## 
 
 def cross_entropy(y, t):
     """The cross-entropy function, applied elementwise."""
@@ -24,30 +24,23 @@ def cross_entropy(y, t):
 
 
 """
+conceptual terms:
+target - from dataset
 # 1. Class of models implementation: know how to compute their predictions and backpropagate derivatives given the loss derivatives
 	Models(loss_derivatives) -> prediction, backpropagate_derivatives
-# 2. Class of loss functions implementation: know how to compute their values and derivatives given the predictions and target
-	loss_function(prediction, target) -> Cost
+# 2. Class of loss functions implementation: know how to compute loss & derivatives given the predictions and target
+	#in func  
+	loss_function(prediction, target) -> loss_values, loss_derivative
+	#in class 
+	class Loss_functions:
+	    @staticmethod
+	    def value(z,t):
+	    @staticmethod
+	    def derivatives(z,t):
 """
 
-class LogisticCrossEntropy:
-    """The loss function used in logistic regression, as a function of z. That is,
-
-        y = logistic(z)
-        loss = cross_entropy(y, t)"""
-
-    @staticmethod
-    def value(z, t):
-        """The value of the loss, computed elementwise"""
-        return np.where(t, np.logaddexp(0., -z), np.logaddexp(0., z))
-
-    @staticmethod
-    def derivatives(z, t):
-        """The loss derivatives, computed elementwise"""
-        y = logistic(z)
-        return y - t
-
-
+# Activation / Loss pairs - Loss Class Implementation
+# Logistic Activation with Squared Error
 class LogisticSquaredError:
     """The value of the squared error loss after a logistic activation function,
     as a function of z. That is,
@@ -68,6 +61,26 @@ class LogisticSquaredError:
         dLdy = y - t
         dydz = y * (1. - y)
         return dLdy * dydz
+
+
+#Logistic Activation with Cross Entropy
+class LogisticCrossEntropy:
+    """The loss function used in logistic regression, as a function of z. That is,
+
+        y = logistic(z)
+        loss = cross_entropy(y, t)"""
+
+    @staticmethod
+    def value(z, t):
+        """The value of the loss, computed elementwise"""
+        return np.where(t, np.logaddexp(0., -z), np.logaddexp(0., z))
+
+    @staticmethod
+    def derivatives(z, t):
+        """The loss derivatives, computed elementwise"""
+        y = logistic(z)
+        return y - t
+
     
 class SoftsignCrossEntropy:
     """The value of the cross-entropy loss function after the transformed softsign
