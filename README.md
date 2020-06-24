@@ -7,6 +7,13 @@ Computing Technique: Backpropagation Algorithm (For gradient) | Automatic Differ
 
 Reference Page: http://www.cs.toronto.edu/~rgrosse/
 
+# 1. Loss Functions and Backprop
+   This assignment is meant to get your feet wet with computing the gradients for a model using backprop
+   then translating your mathematical expressions into vectorized Python code
+   Practice reasoning about the behavior of different loss functions.
+   
+   Binary classification task on MNIST dataset. 
+
 # Selected Fundamental Topics
 ## 1. Supervised Learning vs. Unsupervised Learning
   - The difference, and typical tasks
