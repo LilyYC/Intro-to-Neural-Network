@@ -1,7 +1,7 @@
 # Intro-to-Neural-Network
 A review of materials for the senior university level machine learning course. 
 
-Prerequisites: Advanced calculus | Object-Oriented-Programming | 
+Prerequisites: Advanced calculus | Object-Oriented-Programming | Python3.6
 
 Computing Technique: Backpropagation Algorithm (For gradient) | Automatic Differentiation
 
