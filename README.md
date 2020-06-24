@@ -1,4 +1,4 @@
-# Intro-to-Neural-Network
+# Maching Learning - Neural Network (CSC321->CSC421&CSC411)
 A review of materials for the senior university level machine learning course. 
 
 Prerequisites: Advanced calculus | Object-Oriented-Programming | Python3.6
