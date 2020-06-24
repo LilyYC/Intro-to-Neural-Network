@@ -5,9 +5,10 @@ Prerequisites: Advanced calculus | Object-Oriented-Programming | Python3.6
 
 Computing Technique: Backpropagation Algorithm (For gradient) | Automatic Differentiation
 
+Reference Page: http://www.cs.toronto.edu/~rgrosse/
 
 # Selected Fundamental Topics
-1. Supervised Learning vs. Unsupervised Learning
+## 1. Supervised Learning vs. Unsupervised Learning
   - The difference, and typical tasks
   - supervised learning:  predict with a given target
       - linear regression: predict a scalar valued target
@@ -110,7 +111,3 @@ Policy Gradient
 Q-Learning
 Go
 
-
-
-
-course webpage: http://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/
