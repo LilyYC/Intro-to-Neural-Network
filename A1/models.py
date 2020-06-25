@@ -219,16 +219,18 @@ class MultilayerPerceptron:
 	
 	dLdz = dLdz.reshape(-1,1) # M * 1
 	
-        # dLdH = dLdz * np.dot(1.,self.w2) # M*1
-        dLdH = dLdz * self.w2.reshape(1,-1)    # M*N
+        # dLdH = dLdz * np.dot(1.,self.w2) # M*1 Note that H is a vector!
+        dLdH = dLdz * self.w2.reshape(1,-1)    # (M*1) * (1*N) = M * N 
+	
 	dLdR = dLdH * softsign_prime(act['R']) # M*N
         
-	dcdL = 1/X.size[0] 	# scalar 1*1
+	M = X.size[0]
+
+	derivs['w2'] = dLdz * act['H'].reshape(-1, 1) / M  # (M*1) * (1*N) = M * N 
 	
-	derivs['w2'] = dcdL * dLdz * np.dot(1.,act['H'])
+        derivs['b2'] = dLdz * 1 / M
 	
-        derivs['b2'] = dcdL * dLdz * 1
-        derivs['W1'] = dcdL * dLdR * 
+        derivs['W1'] = np.dot(dLdR.T, X) / M 
         ###    derivs['b1'] = ...
 
         return derivs
