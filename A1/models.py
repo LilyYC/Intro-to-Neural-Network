@@ -2,6 +2,13 @@ import cPickle
 import numpy as np
 import util
 
+"""
+An implementation of Neural Network
+train on MNIST dataset 
+
+This code logic:
+1. define several activation function
+"""
 
 def logistic(z):
     """The logistic function, applied elementwise."""
@@ -22,25 +29,29 @@ def cross_entropy(y, t):
     """The cross-entropy function, applied elementwise."""
     return -t * np.log(y) - (1. - t) * np.log(1. - y)
 
-
+def cross_entropy_prime(y,t):
+    return np.multiply(t, 1./y) + np.multiply(1-t, 1./ (1.-y) )
 """
 conceptual terms:
 target - from dataset
-# 1. Class of models implementation: know how to compute their predictions and backpropagate derivatives given the loss derivatives
+Implementation Classes:
+# 1. Models: know how to compute their predictions and backpropagate derivatives given the loss derivatives
 	Models(loss_derivatives) -> prediction, backpropagate_derivatives
-# 2. Class of loss functions implementation: know how to compute loss & derivatives given the predictions and target
+# 2. Loss Function: know how to compute loss & derivatives given the predictions and target
 	#in func  
 	loss_function(prediction, target) -> loss_values, loss_derivative
 	#in class 
 	class Loss_functions:
+	    
 	    @staticmethod
 	    def value(z,t):
+	    
 	    @staticmethod
 	    def derivatives(z,t):
 """
 
-# Activation / Loss pairs - Loss Class Implementation
-# Logistic Activation with Squared Error
+# Classes 2. Activation / Loss pairs - Loss Class Implementation
+# 2.1 Logistic Activation with Squared Error
 class LogisticSquaredError:
     """The value of the squared error loss after a logistic activation function,
     as a function of z. That is,
@@ -63,7 +74,7 @@ class LogisticSquaredError:
         return dLdy * dydz
 
 
-#Logistic Activation with Cross Entropy
+# 2.2 Logistic Activation with Cross Entropy
 class LogisticCrossEntropy:
     """The loss function used in logistic regression, as a function of z. That is,
 
@@ -103,14 +114,11 @@ class SoftsignCrossEntropy:
         for inspiration."""
 
         ### YOUR CODE HERE
-        ###
-        ### Hint: you may want to structure it like
-        ###
-        ###   y = ...
-        ###   dLdy = ...
-        ###   dyds = ...
-        ###   dsdz = ...
-        ###   return ...
+        y = 0.5 *(1.+softsign(z))
+        dLdy = -t./y + (1-t) ./ (1-y)
+        dyds = 0.5
+        dsdz = softsign_prime(z)
+        return dsdz*dyds*dLdy
         
 
 class LinearModel:
@@ -158,6 +166,12 @@ class LinearModel:
 
 
 class MultilayerPerceptron:
+	""" The Multilayer Perceptron Model with one hidden layer
+		R = W1 x +b1          		(hid*input) * (input*1) + (hid * 1)
+		H = activation1(r)    		(hid * 1)
+		z= w2.transpose * h + b2  	(1* hid) * (hid*1) + 1*1
+		y = activation2(z) 		[put in the Loss class] -> here given dLdz
+	"""
     def __init__(self, W1, b1, w2, b2):
         self.W1 = W1
         self.b1 = b1
@@ -177,7 +191,7 @@ class MultilayerPerceptron:
         
     def compute_activations(self, X):
         """Compute the activations of the hidden units and output units. Return a dict of the activations."""
-        R = np.dot(X, self.W1.T) + self.b1.reshape(1, -1)
+        R = np.dot(X, self.W1.T) + self.b1.reshape(1, -1) # reshape to be in 1 * N
         H = softsign(R)
         z = np.dot(H, self.w2) + self.b2
         return {'R': R, 'H': H, 'z': z}
@@ -187,29 +201,34 @@ class MultilayerPerceptron:
         return act['z'] > 0.
 
     def cost_derivatives(self, X, act, dLdz):
-        """You need to compute the cost derivatives with respect to the parameters of the network. The cost
-        is the loss averaged over the training examples. It should output a dict 'derivs' giving the derivatives with
-        respect to each of the parameters. E.g., derivs['W1'] should be a matrix, where each entry gives the
-        derivative with respect to the corresponding entry of W1; derivs['b2'] should be a scalar giving the
-        derivative with respect to b2; and so on.
+        """Compute the cost derivatives with respect to the parameters of the network. 
+	The cost is the loss averaged over the training examples. 
+	
+	It should output a dict 'derivs' giving the derivatives with respect to each of the parameters. 
+	E.g., derivs['W1'] should be a matrix, where each entry gives the
+        derivative with respect to the corresponding entry of W1; 
+	derivs['b2'] should be a scalar giving the derivative with respect to b2; and so on.
 
-        We follow the conventions for the sizes of matrices which we've used throughout the course. X is an
-        M x D matrix, where M is the size of the mini-batch, and D is the number of input dimensions. In general,
-        the first dimension of each of the activation matrices will be the mini-batch size. The weight matrix W1
-        is N x D, where N is the number of hidden units. b1 and w2 are both vectors, and b2 is a scalar."""
+        We follow the conventions for the sizes of matrices which we've used throughout the course. 
+	X is an M x D matrix, where M is the size of the mini-batch, and D is the number of input dimensions. 
+	In general, the first dimension of each of the activation matrices will be the mini-batch size. 
+	The weight matrix W1 is N x D, where N is the number of hidden units. 
+	b1 and w2 are both vectors, and b2 is a scalar."""
 
         derivs = {}
-
-        ### YOUR CODE HERE
-        ###
-        ### Hint: you may want to structure it like:
-        ###
-        ###    dLdH = ...
-        ###    dLdR = ...
-        ###
-        ###    derivs['w2'] = ...
-        ###    derivs['b2'] = ...
-        ###    derivs['W1'] = ...
+	
+	dLdz = dLdz.reshape(-1,1) # M * 1
+	
+        # dLdH = dLdz * np.dot(1.,self.w2) # M*1
+        dLdH = dLdz * self.w2.reshape(1,-1)    # M*N
+	dLdR = dLdH * softsign_prime(act['R']) # M*N
+        
+	dcdL = 1/X.size[0] 	# scalar 1*1
+	
+	derivs['w2'] = dcdL * dLdz * np.dot(1.,act['H'])
+	
+        derivs['b2'] = dcdL * dLdz * 1
+        derivs['W1'] = dcdL * dLdR * 
         ###    derivs['b1'] = ...
 
         return derivs
