@@ -21,7 +21,7 @@ Reference Page: http://www.cs.toronto.edu/~rgrosse/
       - linear regression: predict a scalar valued target
       - linear classification: classify the result
   - unsupervised learning: predict with unspecified target
-
+      -  #TODO: Apply this to classify/cluster stocks 
   - core idea behind Supervised Learning Program:
     - training set (contain part of both X and Y, need to concatenate explainatory dataset and target dataset)
     - testing set / validation set
