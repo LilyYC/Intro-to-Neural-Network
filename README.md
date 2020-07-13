@@ -14,7 +14,8 @@ Reference Page: http://www.cs.toronto.edu/~rgrosse/
    
    Binary classification task on MNIST dataset. 
 
-# Selected Fundamental Topics
+
+# Selected Topics
 ## 1. Supervised Learning vs. Unsupervised Learning
   - The difference, and typical tasks
   - supervised learning:  predict with a given target
@@ -28,10 +29,7 @@ Reference Page: http://www.cs.toronto.edu/~rgrosse/
     * consideration in the split of dataset: generalization problem
     
 2. Neural Network: Multilayer perceptrons
-  - perceptron: 
-    Comparison of activation functions. 
-    Viewing deep neural nets as function composition and as feature learning. 
-    Limitations of linear networks and universality of nonlinear networks
+ Some conceptual takeaway: How Neural Network work? Why it works?
 
 
 3. ML models[Problems related to Supervised Learning]
