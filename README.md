@@ -28,8 +28,15 @@ Reference Page: http://www.cs.toronto.edu/~rgrosse/
     - testing set / validation set
     * consideration in the split of dataset: generalization problem
     
-2. Neural Network: Multilayer perceptrons
- Some conceptual takeaway: How Neural Network work? Why it works?
+2. Neural Networks: Multilayer perceptrons
+Conceptual Review:
+In 1957, the idea of neural networks was first described as a perceptron.
+Each neuron in a neural network can be think of as a building block, and is fundamentally a mathematical function. By definition, each neuron computes a weighted sum of inputs fed to it, where the weight assigned to each input decides the impact it has on the output. In order for neural networks to solve non-linear problem, we apply an activation function to the weighted sum computed by the neuron. 
+
+The whole idea about machine learning is developed upon experiments, to test the power of a model, the idea is to split dataset into two, one training set, the other, testing set. We expect the weights for contributing input to increase, while others are decreased. By designing this procedure, we specify a learning rate, and use loss function (another design issue) to control model's learning behavior.
+
+Another fundamental idea is differential calculus, as we are trying to explain how a small change in each input affects the model's output, in other words, we need to find out the derivative. As the layer gets deeper, computation power is a great concern. Hence, the concept of backpropagation is a bliss for computer scientists.
+
 
 
 3. ML models[Problems related to Supervised Learning]
