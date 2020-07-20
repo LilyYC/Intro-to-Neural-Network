@@ -1,18 +1,10 @@
-# Maching Learning - Neural Network (CSC321->CSC421&CSC411)
-A review of materials for the senior university level machine learning course. 
+# Machine Learning - Neural Network (CSC321->CSC421&CSC411)
 
 Prerequisites: Advanced calculus | Object-Oriented-Programming | Python3.6
 
-Computing Technique: Backpropagation Algorithm (For gradient) | Automatic Differentiation
+Computing Technique: Back-propagation Algorithm | Automatic Differentiation
 
-Reference Page: http://www.cs.toronto.edu/~rgrosse/
-
-# 1. Loss Functions and Backprop
-   This assignment is meant to get your feet wet with computing the gradients for a model using backprop
-   then translating your mathematical expressions into vectorized Python code
-   Practice reasoning about the behavior of different loss functions.
-   
-   Binary classification task on MNIST dataset. 
+Reference: http://www.cs.toronto.edu/~rgrosse/
 
 
 # Selected Topics
@@ -31,7 +23,9 @@ Reference Page: http://www.cs.toronto.edu/~rgrosse/
 2. Neural Networks: Multilayer perceptrons
 Conceptual Review:
 In 1957, the idea of neural networks was first described as a perceptron.
-Each neuron in a neural network can be think of as a building block, and is fundamentally a mathematical function. By definition, each neuron computes a weighted sum of inputs fed to it, where the weight assigned to each input decides the impact it has on the output. In order for neural networks to solve non-linear problem, we apply an activation function to the weighted sum computed by the neuron. 
+Each neuron in a neural network can be think of as a building block, and is fundamentally a mathematical function. 
+By definition, each neuron computes a weighted sum of inputs fed to it, where the weight assigned to each input decides the impact it has on the output. 
+In order for neural networks to solve non-linear problem, we apply an activation function to the weighted sum computed by the neuron. 
 
 The whole idea about machine learning is developed upon experiments, to test the power of a model, the idea is to split dataset into two, one training set, the other, testing set. We expect the weights for contributing input to increase, while others are decreased. By designing this procedure, we specify a learning rate, and use loss function (another design issue) to control model's learning behavior.
 
@@ -39,8 +33,7 @@ Another fundamental idea is differential calculus, as we are trying to explain h
 
 
 
-3. ML models[Problems related to Supervised Learning]
-Models
+3. ML models [Problems related to Supervised Learning]
   - Linear Regression: 
       - Can be formulated as an optimization problem, 
       - can be solved
@@ -51,7 +44,7 @@ Models
 * Speed Booster Techniques / Thought Process:
   - Vectorization
   - Feature maps and polynomial regression
-  - Generalization: overfitting, underfitting, and validation.
+  - Generalization: overfitting, under-fitting, and validation.
 
 Linear Classification
 - Binary linear classification. 
@@ -67,7 +60,7 @@ Distributed Representations:
   - skip-grams (another distributed representation).
 
 Optimization
-  - How to use the gradients computed by backprop. 
+  - How to use the gradients computed by backprop
   - Features of optimization landscapes: local optima, saddle points, plateaux, ravines. 
   - Stochastic gradient descent and momentum.
 
@@ -117,9 +110,15 @@ Learning Probabilistic Models
 
 Generative Adversarial Networks
 
-
 Autoregressive and Reversible Models
 Policy Gradient
 Q-Learning
 Go
+
+A1. Loss Functions and Backprop
+   This assignment is meant to get your feet wet with computing the gradients for a model using backprop
+   then translating your mathematical expressions into vectorized Python code
+   Practice reasoning about the behavior of different loss functions.
+   
+   Binary classification task on MNIST dataset. 
 
