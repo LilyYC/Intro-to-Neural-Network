@@ -6,22 +6,43 @@ Computing Techniques: Back-propagation | Automatic Differentiation
 
 Reference: http://www.cs.toronto.edu/~rgrosse/
 
-# Selected Topics
+# Selected Conceptual Topics
 
-## 1. Supervised Learning vs. Unsupervised Learning
-  - The difference, and typical tasks
-  - supervised learning:  predict with a given target
-      - linear regression: predict a scalar valued target
-      - linear classification: classify the result
-  - unsupervised learning: predict with unspecified target
-      -  #TODO: Apply this to classify/cluster stocks 
+## 1. Types of Learning models in ML
+### A. Supervised learning:  predict with a given target
+     - to predict a scalar valued target, i.e. when target variable is continuous -> Linear Regression, Polynomial Regression, Quadratic Regression.
+     - to classify the result, i.e. when the target variable is categorial -> Logistic Regression, Naive Bayes, KNN, SVM, Decision Tree, Gradient Boosting, ADA Boosting, Bagging, Random Forest
+     * tasks: Classification/Regression/Estimation
+
   - core idea behind Supervised Learning Program:
     - training set (contain part of both X and Y, need to concatenate explanatory dataset and target dataset)
     - testing set / validation set
     * consideration in the split of dataset: generalization problem
-    
-##2. Neural Networks: Multilayer perceptrons
-Conceptual Review:
+
+  ## B. Unsupervised learning: predict with unspecified target
+	Train the machine without any proper guidance, or when it’s hard to specify a target.
+	The model learns through observations and deduced structures in the data.
+	e.g. PCA, Factor Analysis, Singular Value Decomposition, K-means
+      * tasks: clustering, prediction	
+
+  ## C. Reinforcement Learning
+	Also, no target is given, but there’s a reward/penalty mechanism. 
+	It involves an agent to interact with an environment to create an action, and get reward if it behaves nicely (More code on this in the theoretical physiology course)
+	e.g. Q-Learning, R-Learning
+      * tasks: Decision-making
+
+Difference between ML and Deep Learning:
+- ML involves algorithms that learn from patterns of data then apply it to decision making - relies on structured data
+- Deep Learning is able to learn through processing data, and is similar to the human brain where it identifies something, analyze it, and makes a decision - relies on layers of artificial neural networks
+
+Variable Selection Technique:
+- run Linear Regression and select with p-value
+- Lasso Regression
+- Random Forest and plot variable chart
+- Top features can be selected based on information gain criteria 
+
+## 2. Neural Networks: Multilayer perceptrons
+## Conceptual Review:
 In 1957, the idea of neural networks was first described as a perceptron.
 Each neuron in a neural network can be think of as a building block, and is fundamentally a mathematical function. 
 By definition, each neuron computes a weighted sum of inputs fed to it, where the weight assigned to each input decides the impact it has on the output. 
@@ -29,15 +50,15 @@ In order for neural networks to solve non-linear problem, we apply an activation
 
 The whole idea about machine learning is developed upon experiments, to test the power of a model, the idea is to split dataset into two, one training set, the other, testing set. We expect the weights for contributing input to increase, while others are decreased. By designing this procedure, we specify a learning rate, and use loss function (another design issue) to control model's learning behavior.
 
-Another fundamental idea is differential calculus, as we are trying to explain how a small change in each input affects the model's output, in other words, we need to find out the derivative. As the layer gets deeper, computation power is a great concern. Hence, the concept of backpropagation is a bliss for computer scientists.
+Another fundamental idea is differential calculus, as we are trying to explain how a small change in each input affects the model's output, in other words, we need to find out the derivative. As the layer gets deeper, computation power is a great concern. Hence, the concept of back-propagation is a bliss for computer scientists.
 
-##3. ML models [Problems related to Supervised Learning]
+## 3. ML models [Problems related to Supervised Learning]
   - Linear Regression: 
       - Can be formulated as an optimization problem, 
       - can be solved
                 - directly
                 - gradient descent [algorithm]
-      - 
+      - Gradient Descent vs. Stochastic Gradient Descent
 
 * Speed Booster Techniques / Thought Process:
   - Vectorization
@@ -79,8 +100,8 @@ Automatic Differentiation
 Convolutional Networks
     Convolution operation. 
     Convolution layers and pooling layers. 
-    Equivariance and invariance. 
-    Backprop rules for conv nets.
+    Equi-variance and invariance. 
+    Back-prop rules for conv nets.
 
 Image Classification
     Conv net architectures applied to handwritten digit and object classification. 
@@ -91,10 +112,10 @@ Optimizing the Input
      - conv net visualizations, adversarial inputs, Deep Dream.
 
 ## Recurrent Neural Nets
-  - Backprop through time. Applying RNNs to language modeling and machine translation.
+  - Back-prop through time. Applying RNNs to language modeling and machine translation.
 Learning Long-Term Dependencies
   - Why RNN gradients explode and vanish
-    - the mechanics of backprop
+    - the mechanics of back-prop
     - conceptually in terms of the function the RNN computes 
   - Ways to deal with it: gradient clipping, input reversal, LSTM
 
@@ -114,7 +135,7 @@ Learning Long-Term Dependencies
 ## Policy Gradient
    Q-Learning
 
-A1. Loss Functions and Backprop
+A1. Loss Functions and Back-prop
    This assignment is meant to get your feet wet with computing the gradients for a model using backprop
    then translating your mathematical expressions into vectorized Python code
    Practice reasoning about the behavior of different loss functions.
