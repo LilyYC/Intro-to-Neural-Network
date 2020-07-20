@@ -1,13 +1,13 @@
-# Machine Learning - Neural Network (CSC321->CSC421&CSC411)
+# Machine Learning: Neural Networks
+This is a repo of course project and an extension of course material covered by CSC321-18Fall (now CSC421+CSC411)
 
-Prerequisites: Advanced calculus | Object-Oriented-Programming | Python3.6
-
-Computing Technique: Back-propagation Algorithm | Automatic Differentiation
+Keywords: Machine Learning Theory, predictive algorithms: bagging and gradient boosting methods, NLP, GAN, Graphical Models, Bayesian methods
+Computing Techniques: Back-propagation | Automatic Differentiation
 
 Reference: http://www.cs.toronto.edu/~rgrosse/
 
-
 # Selected Topics
+
 ## 1. Supervised Learning vs. Unsupervised Learning
   - The difference, and typical tasks
   - supervised learning:  predict with a given target
@@ -16,11 +16,11 @@ Reference: http://www.cs.toronto.edu/~rgrosse/
   - unsupervised learning: predict with unspecified target
       -  #TODO: Apply this to classify/cluster stocks 
   - core idea behind Supervised Learning Program:
-    - training set (contain part of both X and Y, need to concatenate explainatory dataset and target dataset)
+    - training set (contain part of both X and Y, need to concatenate explanatory dataset and target dataset)
     - testing set / validation set
     * consideration in the split of dataset: generalization problem
     
-2. Neural Networks: Multilayer perceptrons
+##2. Neural Networks: Multilayer perceptrons
 Conceptual Review:
 In 1957, the idea of neural networks was first described as a perceptron.
 Each neuron in a neural network can be think of as a building block, and is fundamentally a mathematical function. 
@@ -31,9 +31,7 @@ The whole idea about machine learning is developed upon experiments, to test the
 
 Another fundamental idea is differential calculus, as we are trying to explain how a small change in each input affects the model's output, in other words, we need to find out the derivative. As the layer gets deeper, computation power is a great concern. Hence, the concept of backpropagation is a bliss for computer scientists.
 
-
-
-3. ML models [Problems related to Supervised Learning]
+##3. ML models [Problems related to Supervised Learning]
   - Linear Regression: 
       - Can be formulated as an optimization problem, 
       - can be solved
@@ -92,7 +90,7 @@ Optimizing the Input
     Interesting things you can do with gradient descent on the inputs: 
      - conv net visualizations, adversarial inputs, Deep Dream.
 
-Recurrent Neural Nets
+##Recurrent Neural Nets
   - Backprop through time. Applying RNNs to language modeling and machine translation.
 Learning Long-Term Dependencies
   - Why RNN gradients explode and vanish
@@ -100,20 +98,21 @@ Learning Long-Term Dependencies
     - conceptually in terms of the function the RNN computes 
   - Ways to deal with it: gradient clipping, input reversal, LSTM
 
-ResNets and Attention
+##ResNets and Attention
     Deep Residual Networks. 
     Attention-based models for machine translation and caption generation.
 
-Learning Probabilistic Models
+## Batesuab Methods
+    Learning Probabilistic Models
     Maximum likelihood estimation. 
     basics of Bayesian parameter estimation and maximum a-posteriori estimation.
 
-Generative Adversarial Networks
+## Generative Adversarial Networks
 
-Autoregressive and Reversible Models
-Policy Gradient
-Q-Learning
-Go
+## Autoregressive and Reversible Models
+
+## Policy Gradient
+   Q-Learning
 
 A1. Loss Functions and Backprop
    This assignment is meant to get your feet wet with computing the gradients for a model using backprop
