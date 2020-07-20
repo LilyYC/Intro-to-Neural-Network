@@ -90,7 +90,7 @@ Optimizing the Input
     Interesting things you can do with gradient descent on the inputs: 
      - conv net visualizations, adversarial inputs, Deep Dream.
 
-##Recurrent Neural Nets
+## Recurrent Neural Nets
   - Backprop through time. Applying RNNs to language modeling and machine translation.
 Learning Long-Term Dependencies
   - Why RNN gradients explode and vanish
@@ -98,11 +98,11 @@ Learning Long-Term Dependencies
     - conceptually in terms of the function the RNN computes 
   - Ways to deal with it: gradient clipping, input reversal, LSTM
 
-##ResNets and Attention
+## ResNets and Attention
     Deep Residual Networks. 
     Attention-based models for machine translation and caption generation.
 
-## Batesuab Methods
+## Bayesian Methods
     Learning Probabilistic Models
     Maximum likelihood estimation. 
     basics of Bayesian parameter estimation and maximum a-posteriori estimation.
